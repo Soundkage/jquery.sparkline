@@ -1,6 +1,6 @@
 {
-  "name": "jquery.sparkline",
-  "version": "2.1.41",
+  "name": "jquery-sparkline",
+  "version": "2.1.44",
   "description": "This jQuery plugin makes it easy to generate a number of different types of sparklines directly in the browser, using online a line of two of HTML and Javascript.",
   "scripts": {
     "all": "npm run build && npm run gzip && npm run min-gzip",
@@ -8,10 +8,19 @@
     "gzip": "gzip -9 < dist/jquery.sparkline.js >dist/jquery.sparkline.js.gz",
     "min-gzip": "gzip -9 < dist/jquery.sparkline.min.js >dist/jquery.sparkline.min.js.gz"
   },
+  "main": "./jquery.sparkline.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BabOuDev/jquery.sparkline.git"
   },
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js",
+    "*.md"
+  ],
   "keywords": [
     "jquery",
     "sparkline"
