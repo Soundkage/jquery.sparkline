@@ -202,14 +202,17 @@
 
 /*jslint regexp: true, browser: true, jquery: true, white: true, nomen: false, plusplus: false, maxerr: 500, indent: 4 */
 
+var jQuery = require('jquery')
+window.jQuery = jQuery
+
 (function(document, Math, undefined) { // performance/minified-size optimization
-(function(factory) {
+  (function(factory) {
     if(typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if ($ && !$.fn.sparkline) {
-        factory($);
+      define(['jquery'], factory);
+    } else if (jQuery && !jQuery.fn.sparkline) {
+      factory(jQuery);
     }
-}
+  }
 (function($) {
     'use strict';
 

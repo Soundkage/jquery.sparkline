@@ -9,8 +9,8 @@ function copyFile(src, dst) {
   fs.createReadStream(src).pipe(fs.createWriteStream(dst));
 }
 
-var DIST = 'dist/jquery.sparkline.js'
-var DIST_MINIFIED = 'dist/jquery.sparkline.min.js'
+var DIST = 'jquery.sparkline.js'
+var DIST_MINIFIED = 'jquery.sparkline.min.js'
 var SOURCE_DIR = "src"
 var SOURCE_FILES = [
   'header.js',
@@ -53,9 +53,6 @@ concat(SOURCE_FILES, DIST, function (err) {
       replacement: process.env.npm_package_version,
       paths: [DIST, DIST_MINIFIED]
     })
-
-    // Copy Changelog
-    copyFile('Changelog.txt', 'dist/Changelog.txt')
 
     console.log('Done')
   }
