@@ -4,7 +4,7 @@
   "description": "This jQuery plugin makes it easy to generate a number of different types of sparklines directly in the browser, using online a line of two of HTML and Javascript.",
   "scripts": {
     "all": "npm run build && npm run gzip && npm run min-gzip",
-    "build": "node build.js",
+    "build": "node build.mjs",
     "gzip": "gzip -9 < dist/jquery.sparkline.js >dist/jquery.sparkline.js.gz",
     "min-gzip": "gzip -9 < dist/jquery.sparkline.min.js >dist/jquery.sparkline.min.js.gz"
   },
@@ -35,8 +35,8 @@
     "jquery": "^3.5.1"
   },
   "devDependencies": {
-    "concat": "^1.0.0",
-    "replace": "^0.3.0",
-    "uglify-js": "^2.6.1"
+    "concat": "^1.0.3",
+    "replace": "^1.2.1",
+    "uglify-js": "^3.16.3"
   }
 }
