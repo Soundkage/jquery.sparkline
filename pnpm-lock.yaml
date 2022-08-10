@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  concat: ^1.0.3
   jquery: ^3.5.1
   replace: ^1.2.1
   uglify-js: ^3.16.3
@@ -10,7 +9,6 @@ dependencies:
   jquery: 3.6.0
 
 devDependencies:
-  concat: 1.0.3
   replace: 1.2.1
   uglify-js: 3.16.3
 
@@ -89,20 +87,8 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
-  /commander/2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: true
-
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
-    dev: true
-
-  /concat/1.0.3:
-    resolution: {integrity: sha512-f/ZaH1aLe64qHgTILdldbvyfGiGF4uzeo9IuXUloIOLQzFmIPloy9QbZadNsuVv0j5qbKQvQb/H/UYf2UsKTpw==}
-    engines: {node: '>=6'}
-    hasBin: true
-    dependencies:
-      commander: 2.20.3
     dev: true
 
   /decamelize/1.2.0:
