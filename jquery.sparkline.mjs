@@ -202,7 +202,7 @@
 
 /*jslint regexp: true, browser: true, jquery: true, white: true, nomen: false, plusplus: false, maxerr: 500, indent: 4 */
 
-const jQuery = require('jquery');
+import jQuery from 'jquery';
 window.jQuery = jQuery
 
 (function(document, Math, undefined) { // performance/minified-size optimization
