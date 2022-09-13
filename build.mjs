@@ -40,9 +40,8 @@ import * as uglify from 'uglify-js';
 
   SOURCE_FILES.forEach(srcFile => mergeFileOutput += fs.readFileSync(srcFile));
 
-  console.log(process.env.npm_package_version);
-
   const updateVersion = (file) => file.replace('@VERSION@', process.env.npm_package_version);
+
   const minifyCode = (outfile, code) => {
     const minResult = uglify.minify(code, {
       wrap: false
@@ -59,9 +58,7 @@ import * as uglify from 'uglify-js';
 
     try {
       if (outputFile === DIST_MJS) {
-        // Convert to esm
-        // Would be better to use /(const|let|var)\s\w+\s=\s(require\(['|"])\w+-?\w+?(['|"]\);)/g to get all instances
-        // However, more time would be needed to implement. This is all we need for now.
+        // TODO: For brevity use /(const|let|var)\s\w+\s=\s(require\(['|"])\w+-?\w+?(['|"]\);)/g to get all instances
         mergeFileOutput = mergeFileOutput.replace(/const\sjQuery\s=\srequire\('jquery'\);/g, 'import jQuery from \'jquery\';');
         minifyCode(DIST_MJS_MINIFIED, mergeFileOutput);
       }
