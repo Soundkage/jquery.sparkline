@@ -3,12 +3,12 @@ import * as fs from 'fs';
 import * as uglify from 'uglify-js';
 
 (function (){
-  const DIST = 'jquery.sparkline.js';
-  const DIST_MINIFIED = 'jquery.sparkline.min.js';
   const DIST_CJS = 'jquery.sparkline.cjs';
   const DIST_MJS = 'jquery.sparkline.mjs';
+  const DIST_CJS_MINIFIED = 'jquery.sparkline.min.cjs';
+  const DIST_MJS_MINIFIED = 'jquery.sparkline.min.mjs';
 
-  const outputFiles = [DIST, DIST_CJS, DIST_MJS];
+  const outputFiles = [DIST_CJS, DIST_MJS];
   const SOURCE_DIR = "src";
 
   let SOURCE_FILES = [
@@ -40,13 +40,20 @@ import * as uglify from 'uglify-js';
 
   SOURCE_FILES.forEach(srcFile => mergeFileOutput += fs.readFileSync(srcFile));
 
+  console.log(process.env.npm_package_version);
+
   const updateVersion = (file) => file.replace('@VERSION@', process.env.npm_package_version);
+  const minifyCode = (outfile, code) => {
+    const minResult = uglify.minify(code, {
+      wrap: false
+    });
+
+    fs.writeFileSync(outfile, banner + minResult.code)
+    console.log('building', outfile, '...');
+  }
 
   banner = updateVersion(banner);
   mergeFileOutput = updateVersion(mergeFileOutput);
-
-  fs.writeFileSync(DIST, mergeFileOutput);
-  console.log('building', DIST, '...');
 
   outputFiles.forEach(outputFile => {
 
@@ -56,19 +63,13 @@ import * as uglify from 'uglify-js';
         // Would be better to use /(const|let|var)\s\w+\s=\s(require\(['|"])\w+-?\w+?(['|"]\);)/g to get all instances
         // However, more time would be needed to implement. This is all we need for now.
         mergeFileOutput = mergeFileOutput.replace(/const\sjQuery\s=\srequire\('jquery'\);/g, 'import jQuery from \'jquery\';');
+        minifyCode(DIST_MJS_MINIFIED, mergeFileOutput);
       }
 
-      if (outputFile === DIST) {
-        const minResult = uglify.minify(mergeFileOutput, {
-          wrap: false
-        });
-
-        fs.writeFileSync(DIST_MINIFIED, banner + minResult.code)
-        console.log('building', DIST_MINIFIED, '...');
-      } else {
-        fs.writeFileSync(outputFile, mergeFileOutput);
-        console.log('building', outputFile, '...');
+      if (outputFile === DIST_CJS) {
+        minifyCode(DIST_CJS_MINIFIED, mergeFileOutput);
       }
+
     } catch (err) {
       console.error(`Could not complete build for ${outputFile}: ${err}`);
     }
