@@ -1,6 +1,6 @@
 {
   "name": "jquery-sparkline",
-  "version": "4.0.1",
+  "version": "4.0.0",
   "description": "This jQuery plugin makes it easy to generate a number of different types of sparklines directly in the browser, using online a line of two of HTML and Javascript.",
   "scripts": {
     "all": "npm run build && npm run gzip && npm run min-gzip",
