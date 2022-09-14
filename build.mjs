@@ -3,10 +3,10 @@ import * as fs from 'fs';
 import * as uglify from 'uglify-js';
 
 (function (){
-  const DIST_CJS = 'jquery.sparkline.cjs';
   const DIST_MJS = 'jquery.sparkline.mjs';
-  const DIST_CJS_MINIFIED = 'jquery.sparkline.min.cjs';
+  const DIST_CJS = 'jquery.sparkline.cjs';
   const DIST_MJS_MINIFIED = 'jquery.sparkline.min.mjs';
+  const DIST_CJS_MINIFIED = 'jquery.sparkline.min.cjs';
 
   const outputFiles = [DIST_CJS, DIST_MJS];
   const SOURCE_DIR = "src";
